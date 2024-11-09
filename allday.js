@@ -10,13 +10,6 @@ for ( var i=0;i<[cal_events].length;i++) {
         }
 	}
 }
-[global].my_current = null;
-var announce = "";
 
-if( !(current_allday === null )) {
-    [global].my_current = [cal_events][current_allday];
-    announce = my_current.title;
-}
-
-return announce;
+return  (current_allday === null ) ? "" : [cal_events][current_allday].title ;
 
