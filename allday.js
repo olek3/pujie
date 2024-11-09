@@ -12,7 +12,7 @@ for ( var i=0;i<[cal_events].length;i++) {
 	}
 }
 
-announce = (current_allday === null ) ? "" : [cal_events][current_allday].title;
+var announce = (current_allday === null ) ? "" : [cal_events][current_allday].title;
 
 if (announce.length > cut_length ) { announce = announce.substring(1,cut_length) + "...";}
 
