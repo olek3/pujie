@@ -14,6 +14,8 @@ for ( var i=0;i<[cal_events].length;i++) {
 
 var announce = (current_allday === null ) ? "" : [cal_events][current_allday].title;
 
+if(announce.slice(0,5).toLowerCase() = 'день ') {announce = announce.slice(5);}
+
 if (announce.length > cut_length ) { announce = announce.substring(0,cut_length) + "...";}
 
 return  announce ;
