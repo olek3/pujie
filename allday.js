@@ -5,7 +5,7 @@ for ( var i=0;i<[cal_events].length;i++) {
 	if ( [cal_events][i].allday && [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {
 		var offset_i = [cal_events][i].end.offset; 
 		var progress_i = [cal_events][i].progress;  
-        if ( soonestFinish === null || soonestFinish <= offset_i ||  (soonestFinish = offset_i && progress_i > [cal_events][currentEvent].progress ) ) {
+        if ( soonestFinish === null || soonestFinish > offset_i ||  (soonestFinish = offset_i && progress_i >= [cal_events][i].progress ) ) {
             soonestFinish = offset_i;
             currentEvent = i;
         }
