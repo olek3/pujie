@@ -6,7 +6,7 @@ for ( var i=0;i<[cal_events].length;i++) {
 	if ( [cal_events][i].allday && [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {
 		var offset_i = [cal_events][i].end.offset;
 	    debug += ":" + [cal_events][i].title + "-" + offset_i + "/" + soonest_allday;
-        if ( soonest_allday === null || soonest_allday > offset_i ) {
+        if ( soonest_allday === null || soonest_allday >= offset_i ) {
             debug += "[!]"
             soonest_allday = offset_i;
             current_allday = i;
