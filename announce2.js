@@ -1,5 +1,8 @@
-var debug = [cur_evnt] + ":"  + [cur_evnt_full].title + ":" + [cur_evnt_full].begin + "-" + [cur_evnt_full].offset + "/" ;
-debug += [com_evnt] + ":"  + [com_evnt_full].title + ":" + [com_evnt_full].begin + "-" + [com_evnt_full].offset + "/==/" ;
+var debug = "";
+
+if ([cur_evnt]) debug += [cur_evnt] + ":"  + [cur_evnt_full].title + ":" + [cur_evnt_full].begin + "-" + [cur_evnt_full].offset + "/" ;
+if ([com_evnt]) debug += [com_evnt] + ":"  + [com_evnt_full].title + ":" + [com_evnt_full].begin + "-" + [com_evnt_full].offset + "/" ;
+debug += "==/";
 for ( var i=0;i<[cal_events].length;i++) {
     debug += ":" + [cal_events][i].title + ":" + [cal_events][i].begin + "-" + [cal_events][i].offset + "/" ;
 }
