@@ -4,7 +4,7 @@ var latest_start = [cur_evnt_full]?[cur_evnt_full].begin.offset : null;
 var latest_allday = latest_start;  
  for ( var i=0;i<[cal_events].length;i++) {  
 	if ( [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {  
-		var offset_i = [cal_events][i].begin.offset; 
+		var offset_i = [cur_evnt_full][cal_events][i].begin.offset; 
 		var progress_i = [cal_events][i].progress;  
 		if ( ! ([cal_events][i].allday) ) {  
 			if (!current_event || latest_start<offset_i || (latest_start=offset_i &&  progress_i > [cal_events][current_event].progress) ) {  
