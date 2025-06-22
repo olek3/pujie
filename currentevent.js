@@ -2,7 +2,8 @@ var current_event = null;
 var current_allday = null;  
 var latest_start = [cur_evnt_full]?[cur_evnt_full].begin.offset : null;   
 var latest_allday = latest_start;  
- for ( var i=0;i<[cal_events].length;i++) {  
+
+for ( var i=0;i<[cal_events].length;i++) {
 	if ( [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {  
 		var offset_i = [cur_evnt_full][cal_events][i].begin.offset; 
 		var progress_i = [cal_events][i].progress;  
@@ -18,11 +19,11 @@ var latest_allday = latest_start;
 			}  
 		}  
 	}
-   }
+}
 var is_all_day = current_event === null;   
 [global].my_current = [cal_events][(is_all_day)?current_allday:current_event];  
 
-var endtime = ""; var enddate = ""; var my_till = "";
+var endtime = ""; var enddate = ""; var my_till = ""; var my_progress = "";
 if([global].my_current) {
     endtime = [global].my_current.end.hour24 + ":" + ([global].my_current.end.minutes < 10 ? "0" : "" ) + [global].my_current.end.minutes; 
     enddate = [global].my_current.end.day + "/" + [global].my_current.end.month; 
@@ -30,10 +31,17 @@ if([global].my_current) {
     var today = [day_n] + "/" + [month_n];
     if (is_all_day) {
         my_till = (enddate == today || enddate == tomorrow ) ? "" : " →"+enddate;
+        if  ([global].my_current.duration > 86400000) {
+            var days = Math.ceil([global].my_current.duration / 86400000);
+            var day = Math.ceil([global].my_current.duration * [global].my_current.progress / 86400000);
+            my_progress = " ["+day + "/" + days + "]";
+        } else {
+            my_progress = "";
+        }
     } else {
         my_till = " →"+ (enddate == today ? endtime : enddate);
+        my_progress = " "+Math.round([global].my_current.progress*100)+ "%";
     }
     
 }
-var first_line=([global].my_current?([global].my_current.title+(is_all_day?"":" "+Math.round([global].my_current.progress*100)+ "%")+my_till):([cur_evnt]== "No event")?"":[cur_evnt]);   
-return first_line;
+return ([global].my_current?([global].my_current.title+my_progress+my_till):([cur_evnt]== "No event")?"":[cur_evnt]);
