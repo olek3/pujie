@@ -5,7 +5,7 @@ var latest_allday = latest_start;
 
 for ( var i=0;i<[cal_events].length;i++) {
 	if ( [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {  
-		var offset_i = [cur_evnt_full][cal_events][i].begin.offset; 
+		var offset_i = [cal_events][i].begin.offset;
 		var progress_i = [cal_events][i].progress;  
 		if ( ! ([cal_events][i].allday) ) {  
 			if (!current_event || latest_start<offset_i || (latest_start=offset_i &&  progress_i > [cal_events][current_event].progress) ) {  
@@ -21,7 +21,7 @@ for ( var i=0;i<[cal_events].length;i++) {
 	}
 }
 var is_all_day = current_event === null;   
-[global].my_current = [cal_events][(is_all_day)?current_allday:current_event];  
+[global].my_current = [cal_events][is_all_day?current_allday:current_event];
 
 var endtime = ""; var enddate = ""; var my_till = ""; var my_progress = "";
 if([global].my_current) {
@@ -42,6 +42,5 @@ if([global].my_current) {
         my_till = " →"+ (enddate == today ? endtime : enddate);
         my_progress = " "+Math.round([global].my_current.progress*100)+ "%";
     }
-    
 }
 return ([global].my_current?([global].my_current.title+my_progress+my_till):([cur_evnt]== "No event")?"":[cur_evnt]);
