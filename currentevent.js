@@ -40,7 +40,7 @@ if([global].my_current) {
         }
     } else {
         my_till = " →"+ (enddate == today ? endtime : enddate);
-        my_progress = " [еще "+([cur_evnt_full].end.offset > 60 ? Math.round([cur_evnt_full].end.offset /6)/10+"ч" : [cur_evnt_full].end.offset +"м")+"]";
+        my_progress = " [еще "+([global].my_current.end.offset > 60 ? Math.round([global].my_current.end.offset /6)/10+"ч" : [global].my_current.end.offset +"м")+"]";
     }
 
 }
