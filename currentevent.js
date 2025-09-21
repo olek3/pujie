@@ -1,11 +1,11 @@
 var current_event = null;     
 var current_allday = null;  
-var latest_start = [cur_evnt_full]?[cur_evnt_full].end.offset : null;   
+var latest_start = [cur_evnt_full]?[cur_evnt_full].begin.offset : null;   
 var latest_allday = latest_start;  
 
 for ( var i=0;i<[cal_events].length;i++) {
         if ( [cal_events][i].progress > 0 && [cal_events][i].progress<1 ) {  
-                var offset_i = [cal_events][i].end.offset; 
+                var offset_i = [cal_events][i].begin.offset; 
                 var progress_i = [cal_events][i].progress;  
                 if ( ! ([cal_events][i].allday) ) {  
                         if (!current_event || latest_start<offset_i || (latest_start=offset_i &&  progress_i > [cal_events][current_event].progress) ) {  
@@ -40,8 +40,7 @@ if([global].my_current) {
         }
     } else {
         my_till = " →"+ (enddate == today ? endtime : enddate);
-        my_progress = "[еще "+([com_evnt_full].end.offset > 60 ? Math.round([com_evnt_full].end.offset /6)/10+"ч" : [com_evnt_full].end.offset +"м")+"]";
-        var in_time = ;
+        my_progress = " [еще "+([cur_evnt_full].end.offset > 60 ? Math.round([cur_evnt_full].end.offset /6)/10+"ч" : [cur_evnt_full].end.offset +"м")+"]";
     }
 
 }
