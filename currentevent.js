@@ -40,8 +40,8 @@ if([global].my_current) {
         }
     } else {
         my_till = " →"+ (enddate == today ? endtime : enddate);
-        my_progress = " [еще "+([global].my_current.end.offset > 60 ? Math.round([global].my_current.end.offset /6)/10+"ч" : [global].my_current.end.offset +"м")+"]";
+        my_progress = " // +"+([global].my_current.end.offset > 60 ? Math.round([global].my_current.end.offset /6)/10+"ч" : [global].my_current.end.offset +"м");
     }
 
 }
-return ([global].my_current?([global].my_current.title+my_progress+my_till):([cur_evnt]== "No event")?"":[cur_evnt]);
+return ([global].my_current?([global].my_current.title+my_till+my_progress):([cur_evnt]== "No event")?"":[cur_evnt]);
